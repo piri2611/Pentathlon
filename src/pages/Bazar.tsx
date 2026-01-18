@@ -1,13 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
 import { supabase } from '../lib/supabase.ts';
 
-interface BazarProps {
-  onComplete: () => void;
-}
-
 type BazarStep = 'form' | 'buzzer' | 'display';
 
-const Bazar = ({ onComplete }: BazarProps) => {
+const Bazar = () => {
   const [step, setStep] = useState<BazarStep>(() => {
     const saved = localStorage.getItem('bazarStep');
     return (saved as BazarStep) || 'form';
@@ -17,7 +13,6 @@ const Bazar = ({ onComplete }: BazarProps) => {
     return localStorage.getItem('schoolName') || '';
   });
 
-  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const timeoutRef = useRef<number | null>(null);
   const [sessionToken] = useState<string>(() => {

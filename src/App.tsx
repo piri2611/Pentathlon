@@ -72,7 +72,7 @@ function App() {
           }} />
         ) : (
           <>
-            {activePage === 'bazar' && !isLoggedIn && <Bazar onComplete={() => setActivePage('display')} />}
+            {activePage === 'bazar' && !isLoggedIn && <Bazar />}
             {(activePage === 'display' || isLoggedIn) && <Display isLoggedIn={isLoggedIn} />}
           </>
         )}
